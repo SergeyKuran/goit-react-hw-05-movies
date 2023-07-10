@@ -30,6 +30,7 @@ export const Link = styled(NavLink)`
   padding: 4px 8px;
   border-radius: 4px;
   text-decoration: none;
+  border: none;
   color: black;
   font-weight: 500;
 
