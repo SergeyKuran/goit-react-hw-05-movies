@@ -28,3 +28,9 @@ export const A = styled(Link)`
     color: green;
   }
 `;
+
+export const Ul = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
