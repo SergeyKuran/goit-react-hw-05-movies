@@ -15,6 +15,12 @@ const Movies = () => {
   const location = useLocation();
 
   useEffect(() => {
+    if (seachId === '') {
+      localStorage.clear();
+    }
+  }, [seachId]);
+
+  useEffect(() => {
     const savedResults = JSON.parse(localStorage.getItem('search'));
     if (savedResults) {
       setImages(savedResults);

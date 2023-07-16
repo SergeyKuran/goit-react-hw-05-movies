@@ -46,7 +46,7 @@ const Cast = () => {
         {images.length === 0 ? (
           <p>We don`t have many cast for this movies.</p>
         ) : (
-          images?.map(({ id, profile_path = 'No images', character, name }) => (
+          images?.map(({ id, profile_path, character, name }) => (
             <Li key={id}>
               <img
                 src={
