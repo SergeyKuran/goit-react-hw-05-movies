@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Loader from 'components/Loader';
 
 import { Container, Li } from './Cast.styled';
+import defaultImage from 'services/default-image.jpeg';
 
 const API_KEY = 'a964e94c1561e7a69226f00af2f59a8a';
 const params = new URLSearchParams({
@@ -52,7 +53,13 @@ const Cast = () => {
           images?.map(({ id, profile_path = 'No images', character, name }) => (
             <Li key={id}>
               <img
-                src={`https://image.tmdb.org/t/p/w200${profile_path}`}
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w200${profile_path}`
+                    : defaultImage
+                }
+                width="200"
+                height="300"
                 alt={character}
               />
               <h3>{name}</h3>
