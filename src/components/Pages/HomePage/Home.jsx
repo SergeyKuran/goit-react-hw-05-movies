@@ -1,37 +1,36 @@
 import { useState, useEffect } from 'react';
 import { A, Container, Li } from 'components/Pages/HomePage/Home.styled';
-import { Link } from 'react-router-dom';
 import Loader from 'components/Loader';
-
-const API_KEY = 'a964e94c1561e7a69226f00af2f59a8a';
-const params = new URLSearchParams({
-  api_key: API_KEY,
-  per_page: 10,
-});
+import { useLocation } from 'react-router-dom';
+import params from 'api/api_key';
 
 const Home = () => {
   const [images, setImages] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    setIsLoading(true);
-    fetch(`https://api.themoviedb.org/3/trending/movie/day?${params}`)
-      .then(resp => {
-        if (resp.ok) {
-          return resp.json();
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(
+          `https://api.themoviedb.org/3/trending/all/day?${params}`
+        );
+        if (response.ok) {
+          const { results } = await response.json();
+          setImages(results);
+        } else {
+          throw new Error();
         }
-        throw new Error();
-      })
-      .then(data => {
-        setImages([...data.results]);
-      })
-      .catch(error => {
+      } catch (error) {
         setError(error);
-      })
-      .finally(() => {
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -40,13 +39,13 @@ const Home = () => {
       {error && <Container>{error.message}</Container>}
       <h2>Trending today</h2>
       <ul>
-        <Li>
-          {images.map(({ id, title }) => (
-            <A to={`/movies/${id}`} key={id}>
+        {images?.map(({ id, title }) => (
+          <Li key={id}>
+            <A to={`/movies/${id}`} state={{ from: location }}>
               {title}
             </A>
-          ))}
-        </Li>
+          </Li>
+        ))}
       </ul>
     </Container>
   );
