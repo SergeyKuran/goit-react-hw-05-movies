@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   gap: 10px;
   text-align: center;
   max-width: 960px;
@@ -33,4 +33,17 @@ export const Ul = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+`;
+
+export const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+`;
+
+export const Form = styled.form`
+  text-align: center;
+  display: flex;
+  justify-content: center;
 `;
