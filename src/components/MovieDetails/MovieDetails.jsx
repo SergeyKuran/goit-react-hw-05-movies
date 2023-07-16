@@ -4,7 +4,7 @@ import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import Loader from 'components/Loader';
 
 import { A, Button, Container, Div, Li } from './MovieDetails.styled';
-import defaultImage from './';
+import defaultImage from 'services/default-image.jpeg';
 
 const API_KEY = 'a964e94c1561e7a69226f00af2f59a8a';
 const params = new URLSearchParams({
@@ -62,7 +62,7 @@ const MovieDetails = () => {
                   src={
                     images.poster_path
                       ? `https://image.tmdb.org/t/p/original/${images.poster_path}`
-                      : defaultImage
+                      : { defaultImage }
                   }
                   width="400"
                   height="600"
