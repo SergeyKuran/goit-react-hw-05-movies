@@ -2,15 +2,10 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 import Loader from 'components/Loader';
+import params from 'api/api_key';
 
 import { A, Button, Container, Div, Li } from './MovieDetails.styled';
 import defaultImage from 'services/default-image.jpeg';
-
-const API_KEY = 'a964e94c1561e7a69226f00af2f59a8a';
-const params = new URLSearchParams({
-  api_key: API_KEY,
-  per_page: 10,
-});
 
 const MovieDetails = () => {
   const [images, setImages] = useState({});
