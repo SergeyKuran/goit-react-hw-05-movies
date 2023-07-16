@@ -57,7 +57,7 @@ const MovieDetails = () => {
                   src={
                     images.poster_path
                       ? `https://image.tmdb.org/t/p/original/${images.poster_path}`
-                      : { defaultImage }
+                      : defaultImage
                   }
                   width="400"
                   height="600"
