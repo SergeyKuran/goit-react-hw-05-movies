@@ -13,7 +13,7 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
   const location = useLocation();
-  const moviesDetailsRef = useRef(location.state?.from);
+  const moviesDetailsRef = useRef(location.state?.from ?? '/movies');
   const date = new Date(images.release_date).getFullYear();
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import Loader from 'components/Loader';
 import params from 'api/api_key';
 
-import { A, Container, Form, Label, Li } from './Movies.styled';
+import { A, Button, Container, Form, Label, Li } from './Movies.styled';
 
 const Movies = () => {
   const [images, setImages] = useState([]);
@@ -62,7 +62,7 @@ const Movies = () => {
 
   return (
     <Container>
-      <Form onSubmit={onHandleSubmit}>
+      <Form>
         <Label>
           Movies
           <input
@@ -73,6 +73,9 @@ const Movies = () => {
             onChange={evt => setSeachParams({ seachId: evt.target.value })}
           />
         </Label>
+        <Button type="submit" onClick={onHandleSubmit}>
+          Search
+        </Button>
       </Form>
       {isLoading && <Loader />}
       {error && <Container>{error.message}</Container>}

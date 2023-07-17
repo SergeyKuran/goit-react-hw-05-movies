@@ -47,3 +47,21 @@ export const Form = styled.form`
   display: flex;
   justify-content: center;
 `;
+
+export const Button = styled.button`
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  margin-left: 10px;
+  height: fit-content;
+  display: flex;
+  margin-top: auto;
+
+  &:hover {
+    color: white;
+    background-color: green;
+  }
+`;
